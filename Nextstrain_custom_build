@@ -1,8 +1,8 @@
 #Tree-building with Harvest Suite and Nextstrain
-#Harvest Suite: Parsnp performs microbial core genome alignmentand SNP detection; HarvestTools converts the Parsnp output (.xmfa) to a format Augur can accept (.vcf)
+#Harvest Suite: Parsnp performs microbial core genome alignmentand SNP detection; Harvest-tools converts the Parsnp output (.xmfa) to a format Augur can accept (.vcf)
 #Nextstrain: Augur is the bioinformatics pipeline that builds the tree; Auspice is the interactive web-based visualizer
 
-********#Installation*****
+#Docker images required: Parsnp, Harvest-tools, Nextstrain
 
 #Parameters
 reference_fasta="$1"
@@ -17,9 +17,7 @@ parsnp -d $samples_fasta_directory -r $reference_fasta -o $output_directory
 #HarvestTools for file conversion
 harvesttools -x $output_directory/parsnp.xmfa -V $output_directory/alignment.vcf -f $reference_fasta
 
-#Make the config files for Augur
-
-********cat "" > config.yaml**********
+#Make the config file for Augur
 
 cat "{
   "title": "Francisella tularensis",
@@ -82,12 +80,15 @@ cat "{
     "frequencies"
   ]
 }
-" > auspice-config-custom-data.json
+" > config.json
 
 #Augur for tree-building
 nextstrain shell .
 augur tree --alignment $output_directory/alignment.vcf --output $output_directory/tree_raw.nwk --vcf-reference $reference_fasta
 augur refine --tree $output_directory/tree_raw.nwk --alignment $output_directory/alignment.vcf --metadata $samples_metadata --output-tree $output_directory/tree.nwk --output-node-data $output_directory/branch_lengths.json --vcf-reference $reference_fasta --timetree --coalescent opt --stochastic-resolve 
-augur export v2 --tree $output_directory/tree.nwk --metadata $samples_metadata --node-data $output_directory/branch_lengths.json --output $output_directory/final_tree.json --auspice-config config.yaml
+augur export v2 --tree $output_directory/tree.nwk --metadata $samples_metadata --node-data $output_directory/branch_lengths.json --output $output_directory/final_tree.json --auspice-config config.json
+exit
 
-*********#View tree***********
+#View tree
+auspice view -datasetDir $output_directory
+
