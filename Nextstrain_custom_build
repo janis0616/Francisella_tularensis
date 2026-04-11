@@ -3,13 +3,13 @@
 #Nextstrain: Augur is the bioinformatics pipeline that builds the tree; Auspice is the interactive web-based visualizer
 
 #Docker images required: Parsnp, Harvest-tools, Nextstrain
+#Files required: reference sequence (.fasta), consensus sequences (.fasta) in their own directory, metadata (.tsv), auspice-config-custom-data.json (custom settings for tree)
 
 #Parameters
 reference_fasta="$1"
-reference_metadata_tsv="$2"
-samples_fasta_directory="$3"
-samples_metadata="$4"
-output_directory="$5"
+samples_fasta_directory="$2"
+samples_metadata="$3"
+output_directory="$4"
 
 #Parsnp for alignment
 parsnp -d $samples_fasta_directory -r $reference_fasta -o $output_directory
@@ -17,76 +17,11 @@ parsnp -d $samples_fasta_directory -r $reference_fasta -o $output_directory
 #HarvestTools for file conversion
 harvesttools -x $output_directory/parsnp.xmfa -V $output_directory/alignment.vcf -f $reference_fasta
 
-#Make the config file for Augur
-
-cat "{
-  "title": "Francisella tularensis",
-  "maintainers": [
-    {"name": "Hackathon Team 2", "url": "https://github.com/APHL-Infectious-Disease/Group_2"}
-  ],
-  "colorings": [
-    {
-      "key": "subspecies",
-      "title": "subspecies",
-      "type": "categorical"
-    },
-    {
-        "key": "country",
-        "title": "country",
-        "type": "categorical"
-    },
-    {
-        "key": "date",
-        "title": "date",
-        "type": "continuous"
-    },
-    {
-        "key": "strain",
-        "title": "strain",
-        "type": "categorical"
-    },
-    {
-      "key": "source",
-      "title": "source",
-      "type": "categorical"
-    },
-    {
-      "key": "type",
-      "title": "type",
-      "type": "categorical"
-    }
-  ],
-  "geo_resolutions": [
-    "country"
-  ],
-  "display_defaults": {
-    "color_by": "type",
-    "distance_measure": "num_date",
-    "geo_resolution": "country",
-    "map_triplicate": true,
-    "branch_label": "strain"
-  },
-  "filters": [
-    "country",
-    "subspecies",
-    "source",
-    "strain",
-    "type"
-  ],
-  "panels": [
-    "tree",
-    "map",
-    "entropy",
-    "frequencies"
-  ]
-}
-" > config.json
-
 #Augur for tree-building
 nextstrain shell .
 augur tree --alignment $output_directory/alignment.vcf --output $output_directory/tree_raw.nwk --vcf-reference $reference_fasta
 augur refine --tree $output_directory/tree_raw.nwk --alignment $output_directory/alignment.vcf --metadata $samples_metadata --output-tree $output_directory/tree.nwk --output-node-data $output_directory/branch_lengths.json --vcf-reference $reference_fasta --timetree --coalescent opt --stochastic-resolve 
-augur export v2 --tree $output_directory/tree.nwk --metadata $samples_metadata --node-data $output_directory/branch_lengths.json --output $output_directory/final_tree.json --auspice-config config.json
+augur export v2 --tree $output_directory/tree.nwk --metadata $samples_metadata --node-data $output_directory/branch_lengths.json --output $output_directory/final_tree.json --auspice-config auspice-config-custom-data.json
 exit
 
 #View tree
