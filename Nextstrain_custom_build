@@ -31,5 +31,5 @@ augur export v2 --tree $output_directory/tree.nwk --metadata $samples_metadata -
 exit
 
 #View tree
-auspice view -datasetDir $output_directory
+auspice view --datasetDir $output_directory/final_tree.json
 
