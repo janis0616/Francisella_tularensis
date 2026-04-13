@@ -4,6 +4,12 @@
 
 #Docker images required: Parsnp, Harvest-tools, Nextstrain
 #Files required: reference sequence (.fasta), consensus sequences (.fasta) in their own directory, metadata (.tsv), auspice-config-custom-data.json (custom settings for tree)
+##Do not include the reference genome in the fasta directory 
+##Metadata tsv should have the following column headers: strain, subspecies, country, date, source, type
+##Dates must be in the format YYYY-MM-DD with unknown fields as X's, i.e. 2013-05-XX, 195X-XX-XX, or XXXX-XX-XX
+##The items in the strain column must match the names of the fasta files (this is basically the sample name)
+##These strain names cannot contain any spaces or special characters such as ()[]{}|#><
+
 
 #Parameters
 reference_fasta="$1"
