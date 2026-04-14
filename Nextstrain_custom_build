@@ -1,5 +1,6 @@
+#!/usr/bin/env bash
 #Tree-building with Harvest Suite and Nextstrain
-#Harvest Suite: Parsnp performs microbial core genome alignmentand SNP detection; Harvest-tools converts the Parsnp output (.xmfa) to a format Augur can accept (.vcf)
+#Harvest Suite: Parsnp performs microbial core genome alignment and SNP detection; Harvest-tools converts the Parsnp output (.xmfa) to a format Augur can accept (.vcf)
 #Nextstrain: Augur is the bioinformatics pipeline that builds the tree; Auspice is the interactive web-based visualizer
 
 #Docker images required: Parsnp, Harvest-tools, Nextstrain
@@ -10,17 +11,17 @@
 ##The contents of the "strain" column must exactly match the names of the fasta files (this is basically the sample name), including any file extension (either remove the ".fasta" from each consensus sequence file name or include ".fasta" in the strain name)
 ##The strain names cannot contain any spaces or special characters such as ()[]{}|#><
 
-#Parameters
-reference_fasta="$1"
-samples_fasta_directory="$2"
-samples_metadata="$3"
-temp_file_directory="$4"
-output_directory="$5"
+#Variables
+reference_fasta="data/tularensis_SCHU_S4_reference.fasta"
+samples_fasta_directory="data/fasta/"
+samples_metadata="data/nextstrain_metadata.tsv" 
+temp_file_directory="results/nextstrain_temp/"
+output_directory="results/nextstrain_output/"
 
 #Parsnp for alignment
 parsnp -d $samples_fasta_directory -r $reference_fasta -o $temp_file_directory
 
-#HarvestTools for file conversion
+#Harvest-tools for file conversion
 harvesttools -x $temp_file_directory/parsnp.xmfa -V $temp_file_directory/alignment.vcf -f $reference_fasta
 
 #Augur for tree-building
@@ -33,4 +34,3 @@ exit
 #View tree
 auspice view --datasetDir $output_directory
 #Follow the link printed in the terminal
-
