@@ -2,7 +2,7 @@
   "version": "v2",
   "meta": {
     "title": "Francisella tularensis",
-    "updated": "2026-04-09",
+    "updated": "2026-04-14",
     "maintainers": [
       {
         "name": "Hackathon Team 2",
@@ -10,11 +10,10 @@
       }
     ],
     "display_defaults": {
-      "color_by": "type",
+      "color_by": "subspecies",
       "distance_measure": "num_date",
       "geo_resolution": "country",
-      "map_triplicate": true,
-      "branch_label": "strain"
+      "map_triplicate": true
     },
     "colorings": [
       {
@@ -25,7 +24,21 @@
       {
         "key": "subspecies",
         "title": "subspecies",
-        "type": "categorical"
+        "type": "categorical",
+        "scale": [
+          [
+            "holarctica",
+            "#1E88E5"
+          ],
+          [
+            "tularensis",
+            "#9C1616"
+          ],
+          [
+            "mediasiatica",
+            "#FFC107"
+          ]
+        ]
       },
       {
         "key": "country",
@@ -64,6 +77,10 @@
       {
         "key": "country",
         "demes": {
+          "Germany": {
+            "latitude": 51.1657,
+            "longitude": 10.4515
+          },
           "Kazakhstan": {
             "latitude": 48.886304,
             "longitude": 67.283729
@@ -72,21 +89,17 @@
             "latitude": 46.2276,
             "longitude": 2.2137
           },
-          "Germany": {
-            "latitude": 51.1657,
-            "longitude": 10.4515
-          },
           "USA": {
             "latitude": 38.916963,
             "longitude": -98.891372
           },
-          "Slovakia": {
-            "latitude": 48.66667,
-            "longitude": 19.5
-          },
           "Russia": {
             "latitude": 64.6863136,
             "longitude": 97.7453061
+          },
+          "Slovakia": {
+            "latitude": 48.66667,
+            "longitude": 19.5
           }
         }
       }
@@ -102,10 +115,10 @@
     "node_attrs": {
       "div": 0,
       "num_date": {
-        "value": -806.365
+        "value": -971.429
       },
       "date": {
-        "value": "-807-08-20"
+        "value": "-972-07-28"
       }
     },
     "branch_attrs": {},
@@ -113,12 +126,12 @@
       {
         "name": "NODE_0000000",
         "node_attrs": {
-          "div": 0.00111139,
+          "div": 0.00113034,
           "num_date": {
-            "value": -748.584
+            "value": -854.206
           },
           "date": {
-            "value": "-749-06-01"
+            "value": "-855-10-17"
           }
         },
         "branch_attrs": {},
@@ -126,26 +139,26 @@
           {
             "name": "mediasiatica_FSC147",
             "node_attrs": {
-              "div": 0.00111139,
+              "div": 0.00113034,
               "num_date": {
-                "value": 1966.873,
+                "value": 1966.927,
                 "inferred": true,
                 "raw_value": "1966-XX-XX"
-              },
-              "date": {
-                "value": "1966-11-15"
               },
               "strain": {
                 "value": "mediasiatica_FSC147"
               },
-              "subspecies": {
-                "value": "mediasiatica"
-              },
               "type": {
                 "value": "M.I"
               },
+              "date": {
+                "value": "1966-12-05"
+              },
               "country": {
                 "value": "Kazakhstan"
+              },
+              "subspecies": {
+                "value": "mediasiatica"
               }
             },
             "branch_attrs": {}
@@ -153,12 +166,12 @@
           {
             "name": "NODE_0000001",
             "node_attrs": {
-              "div": 0.0050352,
+              "div": 0.00505415,
               "num_date": {
-                "value": 1662.242
+                "value": 1647.202
               },
               "date": {
-                "value": "1662-03-30"
+                "value": "1647-03-15"
               }
             },
             "branch_attrs": {},
@@ -166,29 +179,29 @@
               {
                 "name": "holarctica_OSU18",
                 "node_attrs": {
-                  "div": 0.0050352,
+                  "div": 0.00505415,
                   "num_date": {
                     "value": 1978.999,
                     "inferred": true,
                     "raw_value": "1978-XX-XX"
                   },
-                  "date": {
-                    "value": "1978-12-31"
+                  "source": {
+                    "value": "beaver"
                   },
                   "strain": {
                     "value": "holarctica_OSU18"
                   },
-                  "subspecies": {
-                    "value": "holarctica"
-                  },
                   "type": {
                     "value": "B.4"
+                  },
+                  "date": {
+                    "value": "1978-12-31"
                   },
                   "country": {
                     "value": "USA"
                   },
-                  "source": {
-                    "value": "beaver"
+                  "subspecies": {
+                    "value": "holarctica"
                   }
                 },
                 "branch_attrs": {}
@@ -196,12 +209,12 @@
               {
                 "name": "NODE_0000002",
                 "node_attrs": {
-                  "div": 0.0052013,
+                  "div": 0.00522025,
                   "num_date": {
-                    "value": 1687.747
+                    "value": 1673.726
                   },
                   "date": {
-                    "value": "1687-09-30"
+                    "value": "1673-09-22"
                   }
                 },
                 "branch_attrs": {},
@@ -209,29 +222,29 @@
                   {
                     "name": "holarctica_LVS",
                     "node_attrs": {
-                      "div": 0.00534427,
+                      "div": 0.00536322,
                       "num_date": {
                         "value": 1950.001,
                         "inferred": true,
                         "raw_value": "195X-XX-XX"
                       },
-                      "date": {
-                        "value": "1950-01-01"
+                      "source": {
+                        "value": "water rat"
                       },
                       "strain": {
                         "value": "holarctica_LVS"
                       },
-                      "subspecies": {
-                        "value": "holarctica"
-                      },
                       "type": {
                         "value": "B.13"
+                      },
+                      "date": {
+                        "value": "1950-01-01"
                       },
                       "country": {
                         "value": "Russia"
                       },
-                      "source": {
-                        "value": "water rat"
+                      "subspecies": {
+                        "value": "holarctica"
                       }
                     },
                     "branch_attrs": {}
@@ -239,12 +252,12 @@
                   {
                     "name": "NODE_0000003",
                     "node_attrs": {
-                      "div": 0.00535741,
+                      "div": 0.00537636,
                       "num_date": {
-                        "value": 1996.831
+                        "value": 1995.379
                       },
                       "date": {
-                        "value": "1996-10-31"
+                        "value": "1995-05-19"
                       }
                     },
                     "branch_attrs": {},
@@ -252,29 +265,29 @@
                       {
                         "name": "holarctica_FTNF002-00",
                         "node_attrs": {
-                          "div": 0.00536056,
+                          "div": 0.00537951,
                           "num_date": {
-                            "value": 2000.999,
+                            "value": 2000.964,
                             "inferred": true,
                             "raw_value": "2000-XX-XX"
                           },
-                          "date": {
-                            "value": "2000-12-31"
+                          "source": {
+                            "value": "human"
                           },
                           "strain": {
                             "value": "holarctica_FTNF002-00"
                           },
-                          "subspecies": {
-                            "value": "holarctica"
-                          },
                           "type": {
                             "value": "B.6"
+                          },
+                          "date": {
+                            "value": "2000-12-18"
                           },
                           "country": {
                             "value": "France"
                           },
-                          "source": {
-                            "value": "human"
+                          "subspecies": {
+                            "value": "holarctica"
                           }
                         },
                         "branch_attrs": {}
@@ -282,29 +295,29 @@
                       {
                         "name": "holarctica_F92",
                         "node_attrs": {
-                          "div": 0.00536004,
+                          "div": 0.00537899,
                           "num_date": {
                             "value": 2013.001,
                             "inferred": true,
                             "raw_value": "2013-XX-XX"
                           },
-                          "date": {
-                            "value": "2013-01-01"
+                          "source": {
+                            "value": "marmoset"
                           },
                           "strain": {
                             "value": "holarctica_F92"
                           },
-                          "subspecies": {
-                            "value": "holarctica"
-                          },
                           "type": {
                             "value": "B.6"
+                          },
+                          "date": {
+                            "value": "2013-01-01"
                           },
                           "country": {
                             "value": "Germany"
                           },
-                          "source": {
-                            "value": "marmoset"
+                          "subspecies": {
+                            "value": "holarctica"
                           }
                         },
                         "branch_attrs": {}
@@ -320,12 +333,12 @@
       {
         "name": "NODE_0000004",
         "node_attrs": {
-          "div": 0.00130397,
+          "div": 0.0012845,
           "num_date": {
-            "value": 78.344
+            "value": -9.827
           },
           "date": {
-            "value": "78-05-06"
+            "value": "-010-03-05"
           }
         },
         "branch_attrs": {},
@@ -333,29 +346,29 @@
           {
             "name": "tularensis_WY96-3418",
             "node_attrs": {
-              "div": 0.00130397,
+              "div": 0.0012845,
               "num_date": {
                 "value": 1996.001,
                 "inferred": true,
                 "raw_value": "1996-XX-XX"
               },
-              "date": {
-                "value": "1996-01-01"
+              "source": {
+                "value": "human"
               },
               "strain": {
                 "value": "tularensis_WY96-3418"
               },
-              "subspecies": {
-                "value": "tularensis"
-              },
               "type": {
                 "value": "A.II"
+              },
+              "date": {
+                "value": "1996-01-01"
               },
               "country": {
                 "value": "USA"
               },
-              "source": {
-                "value": "human"
+              "subspecies": {
+                "value": "tularensis"
               }
             },
             "branch_attrs": {}
@@ -363,12 +376,12 @@
           {
             "name": "NODE_0000005",
             "node_attrs": {
-              "div": 0.00282555,
+              "div": 0.00280608,
               "num_date": {
-                "value": 1944.199
+                "value": 1941.382
               },
               "date": {
-                "value": "1944-03-13"
+                "value": "1941-05-20"
               }
             },
             "branch_attrs": {},
@@ -376,12 +389,12 @@
               {
                 "name": "NODE_0000006",
                 "node_attrs": {
-                  "div": 0.00284708,
+                  "div": 0.00282761,
                   "num_date": {
-                    "value": 1985.837
+                    "value": 1985.311
                   },
                   "date": {
-                    "value": "1985-11-02"
+                    "value": "1985-04-24"
                   }
                 },
                 "branch_attrs": {},
@@ -389,29 +402,29 @@
                   {
                     "name": "tularensis_TIGB03",
                     "node_attrs": {
-                      "div": 0.00286809,
+                      "div": 0.00284862,
                       "num_date": {
                         "value": 2004.999,
                         "inferred": true,
                         "raw_value": "2004-XX-XX"
                       },
-                      "date": {
-                        "value": "2004-12-31"
+                      "source": {
+                        "value": "cat"
                       },
                       "strain": {
                         "value": "tularensis_TIGB03"
                       },
-                      "subspecies": {
-                        "value": "tularensis"
-                      },
                       "type": {
                         "value": "A.I"
+                      },
+                      "date": {
+                        "value": "2004-12-31"
                       },
                       "country": {
                         "value": "USA"
                       },
-                      "source": {
-                        "value": "cat"
+                      "subspecies": {
+                        "value": "tularensis"
                       }
                     },
                     "branch_attrs": {}
@@ -419,29 +432,29 @@
                   {
                     "name": "tularensis_TI0902",
                     "node_attrs": {
-                      "div": 0.00284708,
+                      "div": 0.00282761,
                       "num_date": {
                         "value": 2004.001,
                         "inferred": true,
                         "raw_value": "2004-XX-XX"
                       },
-                      "date": {
-                        "value": "2004-01-01"
+                      "source": {
+                        "value": "cat"
                       },
                       "strain": {
                         "value": "tularensis_TI0902"
                       },
-                      "subspecies": {
-                        "value": "tularensis"
-                      },
                       "type": {
                         "value": "A.I"
+                      },
+                      "date": {
+                        "value": "2004-01-01"
                       },
                       "country": {
                         "value": "USA"
                       },
-                      "source": {
-                        "value": "cat"
+                      "subspecies": {
+                        "value": "tularensis"
                       }
                     },
                     "branch_attrs": {}
@@ -451,12 +464,12 @@
               {
                 "name": "NODE_0000007",
                 "node_attrs": {
-                  "div": 0.00284498,
+                  "div": 0.00282551,
                   "num_date": {
-                    "value": 1975.949
+                    "value": 1974.211
                   },
                   "date": {
-                    "value": "1975-12-13"
+                    "value": "1974-03-19"
                   }
                 },
                 "branch_attrs": {},
@@ -464,29 +477,29 @@
                   {
                     "name": "tularensis_NE061598",
                     "node_attrs": {
-                      "div": 0.00285181,
+                      "div": 0.00283234,
                       "num_date": {
                         "value": 1998.001,
                         "inferred": true,
                         "raw_value": "1998-XX-XX"
                       },
-                      "date": {
-                        "value": "1998-01-01"
+                      "source": {
+                        "value": "human"
                       },
                       "strain": {
                         "value": "tularensis_NE061598"
                       },
-                      "subspecies": {
-                        "value": "tularensis"
-                      },
                       "type": {
                         "value": "A.I"
+                      },
+                      "date": {
+                        "value": "1998-01-01"
                       },
                       "country": {
                         "value": "USA"
                       },
-                      "source": {
-                        "value": "human"
+                      "subspecies": {
+                        "value": "tularensis"
                       }
                     },
                     "branch_attrs": {}
@@ -494,12 +507,12 @@
                   {
                     "name": "NODE_0000008",
                     "node_attrs": {
-                      "div": 0.00285129,
+                      "div": 0.00283181,
                       "num_date": {
-                        "value": 1982.991
+                        "value": 1982.346
                       },
                       "date": {
-                        "value": "1982-12-28"
+                        "value": "1982-05-07"
                       }
                     },
                     "branch_attrs": {},
@@ -507,26 +520,26 @@
                       {
                         "name": "tularensis_FSC198",
                         "node_attrs": {
-                          "div": 0.00285496,
+                          "div": 0.00283549,
                           "num_date": {
                             "value": 1986.999,
                             "inferred": true,
                             "raw_value": "1986-XX-XX"
                           },
-                          "date": {
-                            "value": "1986-12-31"
-                          },
                           "strain": {
                             "value": "tularensis_FSC198"
-                          },
-                          "subspecies": {
-                            "value": "tularensis"
                           },
                           "type": {
                             "value": "A.I"
                           },
+                          "date": {
+                            "value": "1986-12-31"
+                          },
                           "country": {
                             "value": "Slovakia"
+                          },
+                          "subspecies": {
+                            "value": "tularensis"
                           }
                         },
                         "branch_attrs": {}
@@ -534,13 +547,13 @@
                       {
                         "name": "tularensis_SCHU_S4.fasta.ref",
                         "node_attrs": {
-                          "div": 0.00285129,
+                          "div": 0.00283181,
                           "num_date": {
-                            "value": 1982.991,
+                            "value": 1982.346,
                             "inferred": true
                           },
                           "date": {
-                            "value": "1982-12-28"
+                            "value": "1982-05-07"
                           }
                         },
                         "branch_attrs": {}
