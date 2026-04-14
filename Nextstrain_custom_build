@@ -3,13 +3,12 @@
 #Nextstrain: Augur is the bioinformatics pipeline that builds the tree; Auspice is the interactive web-based visualizer
 
 #Docker images required: Parsnp, Harvest-tools, Nextstrain
-#Files required: reference sequence (.fasta), consensus sequences (.fasta) in their own directory, metadata (.tsv), auspice-config-custom-data.json (custom settings for tree)
+#Files required (see below for explanations): reference sequence (.fasta), a directory of sequences (.fasta) of the samples, metadata (.tsv), auspice-config-custom-data.json (custom settings for tree)
 ##Do not include the reference genome in the fasta directory or metadata file
 ##Metadata tsv should have the following column headers: strain, subspecies, country, date, source, type
 ##Dates must be in the format YYYY-MM-DD with unknown fields as X's, i.e. 2013-05-XX, 195X-XX-XX, or XXXX-XX-XX
-##The items in the strain column must match the names of the fasta files (this is basically the sample name)
-##These strain names cannot contain any spaces or special characters such as ()[]{}|#><
-
+##The contents of the "strain" column must exactly match the names of the fasta files (this is basically the sample name), including any file extension (either remove the ".fasta" from each consensus sequence file name or include ".fasta" in the strain name)
+##The strain names cannot contain any spaces or special characters such as ()[]{}|#><
 
 #Parameters
 reference_fasta="$1"
@@ -33,5 +32,5 @@ exit
 
 #View tree
 auspice view --datasetDir $output_directory
-#Follow the link printed in the terminal window
+#Follow the link printed in the terminal
 
